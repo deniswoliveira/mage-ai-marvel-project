@@ -1,37 +1,39 @@
 # Mage-AI Marvel Project
+The Mage-AI Marvel Project is a data processing pipeline that uses Mage-AI to process character data from the Marvel API. \
+The processed data is saved in an S3 bucket in Parquet format for further analysis and in a PostgreSQL database.
 
-## Project's goal
-The Mage-AI Marvel Project aims to use the Mage-AI tool to create a data pipeline to process characters data from the Marvel API, and save the new dataset in an s3 bucket in parquet format for further analysis and in a PostgreSQL database.
+## Data Sources
+The Mage-AI Marvel Project uses data from the Marvel API. \
+Access keys can be created by following the Marvel tutorial: https://developer.marvel.com/documentation/getting_started
+
+## Pipeline
+The data pipeline consists of the following steps:
+
+Connect to the Marvel API using the access keys
+Retrieve character data from the API
+Process the data using Mage-AI
+Save the processed data in an S3 bucket and a PostgreSQL database
+A flowchart of the pipeline is shown below:
 
 <img src="https://github.com/deniswoliveira/mage-ai-marvel-project/blob/docs/images/architecture.jpeg" width=50% height=50%>
 
 ## Setup
+To set up the project, follow these steps:
 
-- Creating access keys for Marvel API
-	-	Follow the marvel tutorial for creating access keys https://developer.marvel.com/documentation/getting_started.
+Create an AWS account and create an S3 bucket \
+Create a user and update the read and write permissions on the bucket \
+Create access keys for the S3 bucket and the Marvel API \
+Clone the repository and navigate to the project directory \
+Copy the example files in the secrets and aws-variables.env directories and fill in the required information \
+Start the Docker containers using the command docker-compose up -d \
 
-- Create an s3 bucket
-	- Create an AWS account https://docs.aws.amazon.com/accounts/latest/reference/welcome-first-time-user.html.
-	- Create a bucket in s3 https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html.
-	- Create a user https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html.
-	- Update the read and write permissions on the bucket https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html.
-	- Create the access key and secret key https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html.
+## Running the Pipeline
+To run the pipeline, follow these steps:
 
-- Setting the environment variables
-	Remove the .example suffix in the files below and fill in the information as requested in each file.
-	- secrets/marvel_credentials.json.example
-	- secrets/s3_marvel_api_conf.json.example
-	- aws-variables.env.example
-	
--	Starting the docker containers
-	-	Install docker and docker-compose https://docs.docker.com/get-docker/.
-	-	run the command: \
-		 To Start ```docker-compose up -d``` \
-		 To Stop ```docker-compose stop```
+Access the Mage-AI web interface at http://localhost:6789/
+Click on the "marvel_api" pipeline
+Click on "Run pipeline now" and "Run now"
+Enter the trigger and check the pipeline result
 
--	Running the pipeline on mage
-	-	Enter the url http://localhost:6789/ \
-		<img src="https://github.com/deniswoliveira/mage-ai-marvel-project/blob/docs/images/home.png" width=75% height=75%>
-	-	Click in **"marvel_api"** pipeline
-	- Click in **"Run pipeline now"** and **"Run now"**
-	- Enter the trigger and check the pipeline result
+## Contributing
+If you would like to contribute to the project, please follow the guidelines in the CONTRIBUTING.md file. We welcome contributions from the community to improve the project and make it more useful for data analysts and Marvel fans.
