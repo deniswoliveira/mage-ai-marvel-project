@@ -16,7 +16,7 @@ The data pipeline consists of the following steps:
 
 A flowchart of the pipeline is shown below:
 
-<img src="https://github.com/deniswoliveira/mage-ai-marvel-project/blob/docs/images/architecture.jpeg" width=50% height=50%>
+<img src="https://github.com/deniswoliveira/mage-ai-marvel-project/blob/main/images/architecture.jpeg" width=50% height=50%>
 
 ## Setup
 To set up the project, follow these steps:
