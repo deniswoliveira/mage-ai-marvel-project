@@ -1,11 +1,10 @@
 import hashlib
+import json
 from time import time
 from unittest.mock import patch
-import json
 
 import pandas as pd
 import requests
-from mage_ai.data_preparation.shared.secrets import get_secret_value
 
 if "data_loader" not in globals():
     from mage_ai.data_preparation.decorators import data_loader
@@ -71,8 +70,8 @@ def get_query_with_authentication_params(**kwargs):
     Returns:
     dict: A dictionary containing the authentication parameters
     """
-     
-    marvel_credentials = json.load(open("/home/secrets/" + kwargs['marvel_credentials']))
+
+    marvel_credentials = json.load(open("/home/secrets/" + kwargs["marvel_credentials"]))
     marvel_public_id = marvel_credentials["marvel_public_id"]
     marvel_secret_key = marvel_credentials["marvel_secret_key"]
     timestamp = int(time())
