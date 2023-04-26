@@ -2,6 +2,8 @@ version: '3'
 services:
   postgres-db:
     image: postgres:13-alpine3.17
+    build:
+      context: database
     restart: always
     ports:
       - 5432:5432
@@ -25,7 +27,7 @@ services:
       - ENV=dev
       - MAGE_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/mage
     env_file:
-    - aws-variables.env
+      - aws-variables.env
     ports:
       - 6789:6789
     volumes:
