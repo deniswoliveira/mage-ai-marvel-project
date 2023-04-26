@@ -21,12 +21,12 @@ A flowchart of the pipeline is shown below:
 ## Setup
 To set up the project, follow these steps:
 
-1.  Create an AWS account and create an S3 bucket \
-2.  Create a user and update the read and write permissions on the bucket \
-3.  Create access keys for the S3 bucket and the Marvel API \
-4.  Clone the repository and navigate to the project directory \
-5.  Copy the example files in the secrets and aws-variables.env directories and fill in the required information \
-6.  Start the Docker containers using the command docker-compose up -d \
+1.  Create an AWS account and create an S3 bucket
+2.  Create a user and update the read and write permissions on the bucket
+3.  Create access keys for the S3 bucket and the Marvel API
+4.  Clone the repository and navigate to the project directory
+5.  Copy the example files in the secrets and aws-variables.env directories and fill in the required information
+6.  Start the Docker containers using the command docker-compose up -d
 
 ## Running the Pipeline
 To run the pipeline, follow these steps:
