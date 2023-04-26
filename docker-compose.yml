@@ -1,0 +1,45 @@
+version: '3'
+services:
+  postgres-db:
+    image: postgres:13-alpine3.17
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mage
+      - PG_DATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - mage_ai-networks
+
+  mage-app:
+    hostname: mage_ai
+    image: mageai/mageai:latest
+    build:
+      context: .
+    command: mage start marvel_api
+    environment:
+      - ENV=dev
+      - MAGE_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/mage
+    env_file:
+    - aws-variables.env
+    ports:
+      - 6789:6789
+    volumes:
+      - ./marvel_api:/home/src
+    restart: on-failure:5
+    stdin_open: true # used for interactive debugging
+    tty: true # used for interactive debugging
+    networks:
+      - mage_ai-networks
+
+networks:
+  mage_ai-networks:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local

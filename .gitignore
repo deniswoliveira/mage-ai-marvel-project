@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 .env
+*.env
 .venv
 env/
 venv/
@@ -127,3 +128,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# mage-ai files
+.vscode
+.DS_Store
+.file_versions
+.gitkeep
+.log
+.logs/
+.preferences.yaml
+.variables/
+__pycache__/
+docker-compose.override.yml
+mage-ai.db
+mage_data/
+secrets/marvel_credentials.json
+secrets/s3_marvel_api_conf.json
+cmds.txt

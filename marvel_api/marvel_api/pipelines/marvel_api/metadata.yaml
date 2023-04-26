@@ -1,0 +1,91 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dynamic: false
+  downstream_blocks:
+  - thumbnail_path_transformer
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_marvel_characters
+  status: updated
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_marvel_characters
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_data_to_s3
+  - clean_and_filter_dataframe
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: thumbnail_path_transformer
+  status: executed
+  type: transformer
+  upstream_blocks:
+  - load_marvel_characters
+  uuid: thumbnail_path_transformer
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_data_to_postgres
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: clean_and_filter_dataframe
+  status: executed
+  type: transformer
+  upstream_blocks:
+  - thumbnail_path_transformer
+  uuid: clean_and_filter_dataframe
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_data_to_s3
+  status: updated
+  type: data_exporter
+  upstream_blocks:
+  - thumbnail_path_transformer
+  uuid: export_data_to_s3
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_data_to_postgres
+  status: executed
+  type: data_exporter
+  upstream_blocks:
+  - clean_and_filter_dataframe
+  uuid: export_data_to_postgres
+data_integration: null
+description: null
+executor_count: 1
+extensions:
+  great_expectations:
+    blocks: []
+name: marvel_api
+type: python
+updated_at: '2023-04-26 01:57:28'
+uuid: marvel_api
+variables:
+  marvel_credentials: marvel_credentials.json
+  s3_marvel_api_conf: s3_marvel_api_conf.json
+  schema_name: marvel_api
+  table_name: characters
+widgets: []
